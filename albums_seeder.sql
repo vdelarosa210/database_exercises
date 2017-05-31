@@ -11,4 +11,6 @@ VALUES ('Michael Jackson', 'Thriller', '1982', '46.3', 'Pop, Rock, R&B'),
 ('Bee Gees', 'Saturday Night Fever', '1977', '20.6', 'Disco'),
 ('Fleetwood Mac', 'Rumours', '1977', '27.9', 'Soft rock'),
 ('Shania Twain', 'Come On Over', '1997', '29.6', 'Country, Pop'),
-('Alanis Morissette', 'Jagged Little Pill', '1995', '24.4', 'Alternative Rock');
+('Alanis Morissette', 'Jagged Little Pill', '1995', '24.4', 'Alternative Rock'),
+('The Beatles', 'Sgt. Pepper''s'' Lonely Hearts Club Band', '1967', '13.1', 'Rock'),
+('Nirvana', 'Nevermind', '1991', '16.7', 'Grunge, Alternative Rock');
