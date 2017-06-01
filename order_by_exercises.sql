@@ -25,7 +25,7 @@ AND gender = 'M';
 SELECT *
 FROM employees
 WHERE last_name LIKE "E%E"
-ORDER BY emp_no de;
+ORDER BY emp_no DESC;
 
 -- Employees hired in the 90s and born on xmas — 362 rows.
 SELECT *
