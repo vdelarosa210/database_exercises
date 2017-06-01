@@ -28,10 +28,13 @@ WHERE last_name LIKE "E%E"
 ORDER BY emp_no DESC;
 
 -- Employees hired in the 90s and born on xmas — 362 rows.
+-- Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini.
 SELECT *
 FROM employees
-WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
-AND birth_date like '%12-25'
+WHERE birth_date like '%12-25'
+AND hire_date LIKE '199%'
+ORDER BY birth_date, hire_date DESC;
+
 -- other option is WHERE hire_date between '1990-01-01' AND '1999-12-31'
 
 -- Employees born on Christmas — 842 rows.
