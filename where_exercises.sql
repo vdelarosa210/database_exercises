@@ -25,12 +25,11 @@ SELECT *
 FROM employees
 WHERE last_name LIKE "E%E";
 
--- Employees hired in the 90s — 135,214 rows.
-SELECT
-  first_name,
-  last_name
+-- Employees hired in the 90s and born on xmas — 362 rows.
+SELECT *
 FROM employees
-WHERE hire_date LIKE '199%';
+WHERE hire_date BETWEEN '1990-01-01' AND '1999-12-31'
+AND birth_date like '%12-25'
 -- other option is WHERE hire_date between '1990-01-01' AND '1999-12-31'
 
 -- Employees born on Christmas — 842 rows.
