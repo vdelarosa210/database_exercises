@@ -1,7 +1,7 @@
 USE codeup_test_db;
 
 select 'The name of all albums by Pink Floyd.' as '';
-SELECT name FROM albums WHERE artist = 'Pink Floyd',
+SELECT name FROM albums WHERE artist = Pink Floyd,
 
 select 'The year Sgt. Pepper''s'' Lonely Hearts Club Band was released' as '';
 SELECT release_date FROM albums WHERE name = 'Sgt. Pepper''s'' Lonely Hearts Club Band';
@@ -16,4 +16,4 @@ select 'These albums had less than 20 million certified sales' as '';
 SELECT * from albums WHERE sales <= 20.00;
 
 select 'These albums contain a rock genre' as '';
-SELECT * from albums WHERE genre = rock;
+SELECT * from albums WHERE genre like '%rock%';
