@@ -24,7 +24,8 @@ AND gender = 'M';
 -- Employees whose last name starts or ends with 'E' — 7,330 rows.
 SELECT *
 FROM employees
-WHERE last_name LIKE "E%E";
+WHERE last_name LIKE "E%E"
+ORDER BY emp_no de;
 
 -- Employees hired in the 90s and born on xmas — 362 rows.
 SELECT *
