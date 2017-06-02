@@ -47,14 +47,18 @@ FROM employees
 WHERE birth_date LIKE '%12-25';
 
 -- Find all employees with a 'q' in their last name but not 'qu' — 547 rows.
-SELECT count (DISTINCT first_name, last_name)
+SELECT count(DISTINCT first_name), count(DISTINCT last_name)
 FROM employees
 WHERE last_name LIKE '%q%'
 AND last_name NOT LIKE '%qu%'
 ORDER BY first_name, last_name;
 
-SELECT first_name, last_name
+SELECT distinct first_name, last_name, count(last_name)
 FROM employees
 WHERE last_name LIKE '%q%'
       AND last_name NOT LIKE '%qu%'
 GROUP BY first_name, last_name;
+
+SELECT concat(emp_no, " - ", last_name, '', '', first_name) as full_name, birth_date as DOB
+FROM employees
+LIMIT 10;
