@@ -1,10 +1,11 @@
 USE employees;
 
-
 # Use DISTINCT to find the unique titles in the titles table.
 SELECT DISTINCT title
-FROM employees
+FROM titles
 GROUP BY title ASC;
+
+SELECT @@GLOBAL.sql_mode;
 
 # Update the previous query to sort the results alphabetically.
 
@@ -18,3 +19,7 @@ GROUP BY last_name ASC;
 
 # Find the unique last names with a 'q' but not 'qu'. You may use either DISTINCT or GROUP BY.
 
+#SELECT DISTINCT last_name LIKE '%q%'
+ #               AND last_name NOT LIKE '%qu%';
+#FROM employees
+#GROUP BY last_name;
