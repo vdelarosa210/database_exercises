@@ -33,8 +33,8 @@ SELECT *
 FROM employees
 WHERE birth_date like '%12-25'
 AND hire_date LIKE '199%'
-ORDER BY birth_date, hire_date DESC
-LIMIT 5 OFFSET 10;
+ORDER BY birth_date ASC, hire_date DESC
+LIMIT 5 OFFSET 45;
 
 -- other option is WHERE hire_date between '1990-01-01' AND '1999-12-31'
 
