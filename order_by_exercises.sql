@@ -33,6 +33,12 @@ AND hire_date LIKE '199%'
 ORDER BY birth_date ASC, hire_date DESC
 LIMIT 5 OFFSET 45;
 
+SELECT concat(datediff(curdate(),hire_date), ' ', 'days')
+FROM employees
+WHERE birth_date like '%12-25'
+      AND hire_date LIKE '199%';
+
+
 -- other option is WHERE hire_date between '1990-01-01' AND '1999-12-31'
 
 -- Employees born on Christmas — 842 rows.
@@ -41,7 +47,8 @@ FROM employees
 WHERE birth_date LIKE '%12-25';
 
 -- Find all employees with a 'q' in their last name but not 'qu' — 547 rows.
-SELECT *
+SELECT count (DISTINCT first_name, last_name)
 FROM employees
 WHERE last_name LIKE '%q%'
-AND last_name NOT LIKE '%qu%';
+AND last_name NOT LIKE '%qu%'
+ORDER BY first_name, last_name;
