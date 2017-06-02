@@ -11,15 +11,12 @@ WHERE first_name = 'Irena'
 ORDER BY last_name ASC, first_name ASC;
 
 # Add a condition to find everybody with those names who is also male — 441 rows.
-SELECT
-  first_name,
-  last_name,
-  emp_no
+SELECT count(*)
 FROM employees
 WHERE (first_name = 'Irena'
       OR first_name = 'Vidya'
       OR first_name = 'Maya')
-AND gender = 'M';
+GROUP BY gender;
 
 -- Employees whose last name starts or ends with 'E' — 7,330 rows.
 SELECT *
