@@ -14,8 +14,8 @@ ORDER BY last_name ASC, first_name ASC;
 SELECT count(*)
 FROM employees
 WHERE (first_name = 'Irena'
-      OR first_name = 'Vidya'
-      OR first_name = 'Maya')
+       OR first_name = 'Vidya'
+       OR first_name = 'Maya')
 GROUP BY gender;
 
 -- Employees whose last name starts and ends with 'E'
@@ -28,16 +28,15 @@ ORDER BY emp_no DESC;
 -- Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini.
 SELECT *
 FROM employees
-WHERE birth_date like '%12-25'
-AND hire_date LIKE '199%'
+WHERE birth_date LIKE '%12-25'
+      AND hire_date LIKE '199%'
 ORDER BY birth_date ASC, hire_date DESC
 LIMIT 5 OFFSET 45;
 
-SELECT concat(datediff(curdate(),hire_date), ' ', 'days')
+SELECT concat(datediff(curdate(), hire_date), ' ', 'days')
 FROM employees
-WHERE birth_date like '%12-25'
+WHERE birth_date LIKE '%12-25'
       AND hire_date LIKE '199%';
-
 
 -- other option is WHERE hire_date between '1990-01-01' AND '1999-12-31'
 
@@ -47,18 +46,27 @@ FROM employees
 WHERE birth_date LIKE '%12-25';
 
 -- Find all employees with a 'q' in their last name but not 'qu' — 547 rows.
-SELECT count(DISTINCT first_name), count(DISTINCT last_name)
+SELECT
+  count(DISTINCT first_name),
+  count(DISTINCT last_name)
 FROM employees
 WHERE last_name LIKE '%q%'
-AND last_name NOT LIKE '%qu%'
+      AND last_name NOT LIKE '%qu%'
 ORDER BY first_name, last_name;
 
-SELECT distinct first_name, last_name, count(last_name)
+SELECT DISTINCT
+  first_name,
+  last_name,
+  count(last_name)
 FROM employees
 WHERE last_name LIKE '%q%'
       AND last_name NOT LIKE '%qu%'
 GROUP BY first_name, last_name;
 
-SELECT concat(emp_no, " - ", last_name, '', '', first_name) as full_name, birth_date as DOB
+SELECT
+  concat(emp_no, " - ", last_name, '', '', first_name) AS full_name,
+  birth_date                                           AS DOB
 FROM employees
 LIMIT 10;
+
+-- //////////////////////////////////////// --
