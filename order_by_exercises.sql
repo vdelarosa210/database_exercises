@@ -10,7 +10,7 @@ WHERE first_name = 'Irena'
       OR first_name = 'Maya'
 ORDER BY last_name ASC, first_name ASC;
 
-# Add a condition to find everybody with those names who is also male — 441 rows.
+# Add a condition to find everybody with those names who is also male
 SELECT count(*)
 FROM employees
 WHERE (first_name = 'Irena'
@@ -18,13 +18,13 @@ WHERE (first_name = 'Irena'
       OR first_name = 'Maya')
 GROUP BY gender;
 
--- Employees whose last name starts or ends with 'E' — 7,330 rows.
-SELECT *
+-- Employees whose last name starts and ends with 'E'
+SELECT concat(first_name, last_name)
 FROM employees
 WHERE last_name LIKE "E%E"
 ORDER BY emp_no DESC;
 
--- Employees hired in the 90s and born on xmas — 362 rows.
+-- Employees hired in the 90s and born on xmas —
 -- Change the query for employees hired in the 90s and born on Christmas such that the first result is the oldest employee who was hired last. It should be Khun Bernini.
 SELECT *
 FROM employees
