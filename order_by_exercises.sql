@@ -52,3 +52,9 @@ FROM employees
 WHERE last_name LIKE '%q%'
 AND last_name NOT LIKE '%qu%'
 ORDER BY first_name, last_name;
+
+SELECT first_name, last_name
+FROM employees
+WHERE last_name LIKE '%q%'
+      AND last_name NOT LIKE '%qu%'
+GROUP BY first_name, last_name;
