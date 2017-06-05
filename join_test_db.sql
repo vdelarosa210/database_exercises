@@ -72,16 +72,25 @@ WHERE dm.to_date > now()
 ORDER BY d.dept_name;
 
 -- Find the name of all departments currently managed by women.
-SELECT d.dept_name as 'Department Name'
+SELECT d.dept_name as 'Department Name',
+  concat(e.first_name, ' ', e.last_name) as 'Manager Name'
 FROM departments d
 JOIN dept_manager dm on d.dept_no = dm.dept_no
 JOIN employees e ON dm.emp_no = e.emp_no
 WHERE dm.to_date > now()
-AND e.gender = 'F';
-
-
+AND e.gender = 'F'
+ORDER BY d.dept_name ASC ;
 
 -- Find the current titles of employees currently working in the Customer Service department.
 
+SELECT t.title as 'Title', count(*) as 'Count'
+FROM titles as t
+JOIN employees as e on t.emp_no = e.emp_no
+join dept_emp as de on e.emp_no = de.emp_no
+WHERE t.to_date > now()
+AND de.to_date > now()
+and d.dept_name = 'Customer Service'
+GROUP BY t.title;
 
 -- Find the current salary of all current managers.
+
