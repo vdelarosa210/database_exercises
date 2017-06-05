@@ -53,3 +53,22 @@ FROM users
 SELECT users.name as user_name, roles.name as role_name
 FROM roles
   LEFT JOIN users ON users.role_id = roles.id;
+
+-- write a query that shows each department along with the name of the current manager for that department.
+
+SELECT d.dept_name, e.first_name, e.last_name
+FROM departments as d
+  JOIN  dept_emp as de on d.dept_no = de.dept_no
+  JOIN employees as e on e.emp_no = de.emp_no
+JOIN dept_manager as dm on e.emp_no = dm.emp_no
+WHERE dm.to_date > now()
+ORDER BY d.dept_name;
+
+
+-- Find the name of all departments currently managed by women.
+
+
+-- Find the current titles of employees currently working in the Customer Service department.
+
+
+-- Find the current salary of all current managers.
