@@ -90,7 +90,7 @@ SELECT
 FROM titles AS t
   JOIN employees AS e ON t.emp_no = e.emp_no
   JOIN dept_emp AS de ON e.emp_no = de.emp_no
-  JOIN departments as d on de.dept_no = d.dept_no
+  JOIN departments AS d ON de.dept_no = d.dept_no
 WHERE t.to_date > now()
       AND de.to_date > now()
       AND d.dept_name = 'Customer Service'
@@ -108,3 +108,61 @@ FROM salaries AS s
   JOIN departments AS d ON dm.dept_no = d.dept_no
 WHERE s.to_date > now()
       AND dm.to_date > NOW();
+
+-- Find the name of the departments managed by women and the names of current women managers
+
+SELECT *
+FROM departments
+WHERE dept_no IN (
+  SELECT dept_no
+  FROM dept_manager
+  WHERE emp_no IN (
+    SELECT emp_no
+    FROM employees
+    WHERE gender = 'F')
+);
+
+-- Using sub-queries
+SELECT *
+FROM employees
+WHERE gender = 'F'
+      AND emp_no IN (
+  SELECT emp_no
+  FROM dept_manager
+  WHERE to_date > now()
+);
+
+-- SUB-QUERIES EXERCISE --
+
+-- Find all the employees with the same hire date as employee 101010 using a sub-query.
+
+SELECT *
+FROM employees
+WHERE hire_date IN (
+  SELECT emp_no = 101010
+  FROM employees
+  WHERE hire_date = TRUE
+);
+
+-- Find all the titles held by all employees with the first name Aamod.
+
+SELECT *
+FROM employees
+WHERE first_name = 'Aamod';
+
+-- Find all the department managers that are female.
+
+
+
+-- BONUS Find all the department names that have female managers.
+
+SELECT *
+FROM departments
+WHERE dept_no IN (
+  SELECT dept_no
+  FROM dept_manager
+  WHERE emp_no IN (
+    SELECT emp_no
+    FROM employees
+    WHERE gender = 'F')
+);
