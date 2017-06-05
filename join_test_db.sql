@@ -147,8 +147,13 @@ WHERE hire_date IN (
 -- Find all the titles held by all employees with the first name Aamod.
 
 SELECT *
-FROM employees
-WHERE first_name = 'Aamod';
+FROM titles
+WHERE emp_no IN (
+select emp_no
+from employees
+where first_name = 'Aamod'
+  GROUP BY title
+);
 
 -- Find all the department managers that are female.
 
