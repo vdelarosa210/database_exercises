@@ -46,26 +46,39 @@ SELECT
 FROM users
   LEFT JOIN roles ON users.role_id = roles.id;
 
-SELECT users.name AS user_name, roles.name AS role_name
+SELECT
+  users.name AS user_name,
+  roles.name AS role_name
 FROM users
   RIGHT JOIN roles ON users.role_id = roles.id;
 
-SELECT users.name as user_name, roles.name as role_name
+SELECT
+  users.name AS user_name,
+  roles.name AS role_name
 FROM roles
   LEFT JOIN users ON users.role_id = roles.id;
 
 -- write a query that shows each department along with the name of the current manager for that department.
 
-SELECT d.dept_name, e.first_name, e.last_name
-FROM departments as d
-  JOIN  dept_emp as de on d.dept_no = de.dept_no
-  JOIN employees as e on e.emp_no = de.emp_no
-JOIN dept_manager as dm on e.emp_no = dm.emp_no
+SELECT
+  d.dept_name as 'Department Name',
+  concat(e.first_name, ' ',
+  e.last_name) as 'Department Manager'
+FROM departments AS d
+  JOIN dept_emp AS de ON d.dept_no = de.dept_no
+  JOIN employees AS e ON e.emp_no = de.emp_no
+  JOIN dept_manager AS dm ON e.emp_no = dm.emp_no
 WHERE dm.to_date > now()
 ORDER BY d.dept_name;
 
-
 -- Find the name of all departments currently managed by women.
+SELECT d.dept_name as 'Department Name'
+FROM departments d
+JOIN dept_manager dm on d.dept_no = dm.dept_no
+JOIN employees e ON dm.emp_no = e.emp_no
+WHERE dm.to_date > now()
+AND e.gender = 'F';
+
 
 
 -- Find the current titles of employees currently working in the Customer Service department.
