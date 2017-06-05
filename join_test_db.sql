@@ -157,7 +157,14 @@ where first_name = 'Aamod'
 
 -- Find all the department managers that are female.
 
-
+SELECT *
+FROM employees
+WHERE gender = 'F'
+      AND emp_no IN (
+  SELECT emp_no
+  FROM dept_manager
+  WHERE to_date > now()
+);
 
 -- BONUS Find all the department names that have female managers.
 
