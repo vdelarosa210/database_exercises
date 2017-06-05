@@ -138,21 +138,21 @@ WHERE gender = 'F'
 
 SELECT *
 FROM employees
-WHERE hire_date IN (
-  SELECT emp_no = 101010
+WHERE hire_date = (
+  SELECT hire_date
   FROM employees
-  WHERE hire_date = TRUE
+  WHERE emp_no = 101010
 );
 
 -- Find all the titles held by all employees with the first name Aamod.
 
-SELECT *
+SELECT title
 FROM titles
 WHERE emp_no IN (
 select emp_no
 from employees
 where first_name = 'Aamod'
-  GROUP BY title
+  ORDER BY title ASC
 );
 
 -- Find all the department managers that are female.
