@@ -90,6 +90,7 @@ SELECT
 FROM titles AS t
   JOIN employees AS e ON t.emp_no = e.emp_no
   JOIN dept_emp AS de ON e.emp_no = de.emp_no
+  JOIN departments as d on de.dept_no = d.dept_no
 WHERE t.to_date > now()
       AND de.to_date > now()
       AND d.dept_name = 'Customer Service'
